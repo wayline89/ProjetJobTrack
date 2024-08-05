@@ -12,6 +12,8 @@ router.get('*', checkUser)
 router.post('*', checkUser)
 router.delete('*', checkUser)
 router.put('*', checkUser)
+router.put('*', checkUser)
+router.get('/profile', checkOffers)
 
 
 // Register routes

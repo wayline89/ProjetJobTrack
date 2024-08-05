@@ -86,6 +86,9 @@ module.exports.create_offer_get = async (req, res) => {
 };
 
 
+
+
+
 // module.exports.create_offer_get = (req, res) => {
 //     res.render('create_offer')}
 

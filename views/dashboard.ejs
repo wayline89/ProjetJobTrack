@@ -3,12 +3,13 @@
 <div class="offres content">
   <% if (offers.length > 0) { %>
     <h1 class="user-name"><%= user.firstname %> <%= user.lastname %></h1>
+    <button><a href="/create_offer">Create a new offer</a></button>
     <div class="offers-grid">
       <% offers.forEach(offer => { %>
         <div class="offer-card">
           <p class="title"><%= offer.title %></p>
           <p class="company"><strong>Company:</strong> <%= offer.company %></p>
-          <p class="website"><strong>Website:</strong> <a href="<%= offer.website %>" target="_blank"><%= offer.website %></a></p>
+          <p class="website"><strong>Website:</strong> <a href="https:<%= offer.website %> "><%= offer.website %></a></p>
           <div class="contact">
             <div class="contact-item">
               <span class="contact-label">Name:</span>
@@ -39,6 +40,8 @@
               <span class="contact-value"><%= offer.comments %></span>
             </div>
           </div>
+          <!-- <button><a href="/display_offer?offer_id=<%= offer.id %>">See More</a></button> -->
+          <button><a href="/display_offer">See More</a></button>
         </div>
       <% }) %>
     </div>

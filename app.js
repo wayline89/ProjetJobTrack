@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const authRoutes = require("./routes/authRoutes");
 const cookieParser = require("cookie-parser");
-const {requireAuth, checkUser} = require('./middleware/authMiddleware')
+const {requireAuth, checkUser, checkOffers} = require('./middleware/authMiddleware')
 const bodyParser = require('body-parser');
 const { dashboard_get } = require("./controllers/dashboardController");
 
@@ -33,19 +33,26 @@ mongoose
 
 // routes
 app.get('*', checkUser);
+app.get('*', checkOffers);
 
 
-app.get("/", (req, res) => res.render("home"));
+
+app.get("/", (req, res) => res.render("login"));
 app.get("/smoothies", requireAuth, (req, res) => res.render("smoothies"));
-app.get("/home", requireAuth, (req, res) => res.render("smoothies"));
-
+app.get("/home", requireAuth,  dashboard_get ); 
 
 app.get('/create_offer', requireAuth, (req, res) => res.render('create_offer'));
+app.get('/display_offer',  (req, res) => res.render('display_offer'));
 app.get('/job', requireAuth, (req, res) => res.render('job'));
 app.get('/profile', requireAuth, (req, res) => res.render('profile'));
 
 
 app.get('/dashboard', requireAuth, dashboard_get ); 
-app.get('/signup', requireAuth, (req, res) => res.render('signup'));
+app.get('/signup',  (req, res) => res.render('signup'));
+
+
+
+
+
 
 app.use(authRoutes);

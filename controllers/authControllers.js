@@ -49,7 +49,6 @@ module.exports.signup_get = (req, res) =>{
 }
 
 
-
 module.exports.login_get = (req, res) => {
   if (req.cookies.jwt) {
       console.log("user already logged in");
@@ -57,7 +56,6 @@ module.exports.login_get = (req, res) => {
   }
   res.render('login')
 };
-
 
 
 module.exports.signup_post = async (req, res)=>{
@@ -90,6 +88,6 @@ module.exports.login_post = async (req, res)=>{
 
 module.exports.logout_get = (req, res)=>{
   res.cookie('jwt', '', {maxAge : 1});
-  res.redirect('/');
+  res.redirect('/login');
 }
 
