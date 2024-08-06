@@ -4,6 +4,24 @@
   <% if (offers.length > 0) { %>
     <h1 class="user-name"><%= user.firstname %> <%= user.lastname %></h1>
     <button><a href="/create_offer">Create a new offer</a></button>
+    <div class="container container3">
+      <div class="FilteredBy">
+          <label for="filter">Filtered by: </label>
+          <select name="filter" id="filter">
+              <option value="date">Date</option>
+              <option value="status">Status</option>
+          </select>
+
+      </div>
+      <div class="FilteredBy">
+          <label for="order">Order: </label>
+          <select name="order" id="order">
+              <option value="asc">Asc.</option>
+              <option value="desc">Desc.</option>
+          </select>
+
+      </div>
+  </div>
     <div class="offers-grid">
       <% offers.forEach(offer => { %>
         <div class="offer-card">
@@ -40,8 +58,8 @@
               <span class="contact-value"><%= offer.comments %></span>
             </div>
           </div>
-          <!-- <button><a href="/display_offer?offer_id=<%= offer.id %>">See More</a></button> -->
-          <button><a href="/display_offer">See More</a></button>
+          <button><a href="/display_offer?offer_id=<%= offer._id %>">See More</a></button>
+
         </div>
       <% }) %>
     </div>

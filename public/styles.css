@@ -251,39 +251,44 @@ footer {
   text-decoration: none;
 }
 
- button:hover {
-  transform: scale(1.1); 
-  animation: buzz 0.5s ;
+button:hover {
+  transform: scale(1.1);
+  animation: buzz 0.5s;
   animation-iteration-count: 2;
 }
 
 @keyframes buzz {
-  0%, 100% {
-      transform: translate(0, 0);
-      transform: rotate(10deg);
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+    transform: rotate(10deg);
   }
+
   25% {
-      transform: translate(2px, -2px);
-      transform: rotate(-10deg);
+    transform: translate(2px, -2px);
+    transform: rotate(-10deg);
   }
+
   50% {
-      transform: translate(-2px, 2px);
-      transform: rotate(10deg);
+    transform: translate(-2px, 2px);
+    transform: rotate(10deg);
   }
+
   75% {
-      transform: translate(-2px, -2px);
-      transform: rotate(0);
+    transform: translate(-2px, -2px);
+    transform: rotate(0);
 
   }
 }
 
-nav  img{
-border-radius: 50%;
+nav img {
+  border-radius: 50%;
 }
 
 
 
-.profile-title{
+.profile-title {
   margin-bottom: 30px;
 }
 
@@ -372,5 +377,17 @@ border-radius: 50%;
   text-align: center;
   color: #666;
   font-size: 1.1em;
+}
+
+.FilteredBy {
+  display: flex;
+  justify-content: space-between;
+  max-width: 200px;
+}
+
+.FilteredBy select {
+  height: 50%;
+  margin-top: 25px;
+  margin-left: 20px;
 }
 

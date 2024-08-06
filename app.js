@@ -5,6 +5,7 @@ const cookieParser = require("cookie-parser");
 const {requireAuth, checkUser, checkOffers} = require('./middleware/authMiddleware')
 const bodyParser = require('body-parser');
 const { dashboard_get } = require("./controllers/dashboardController");
+const { display_offer, display_offer_id, update_offer, update_offerput } = require("./controllers/offerControllers");
 
 const app = express();
 
@@ -42,17 +43,19 @@ app.get("/smoothies", requireAuth, (req, res) => res.render("smoothies"));
 app.get("/home", requireAuth,  dashboard_get ); 
 
 app.get('/create_offer', requireAuth, (req, res) => res.render('create_offer'));
-app.get('/display_offer',  (req, res) => res.render('display_offer'));
+
 app.get('/job', requireAuth, (req, res) => res.render('job'));
 app.get('/profile', requireAuth, (req, res) => res.render('profile'));
+
 
 
 app.get('/dashboard', requireAuth, dashboard_get ); 
 app.get('/signup',  (req, res) => res.render('signup'));
 
 
+app.get('/display_offer', requireAuth, display_offer_id ); 
 
-
-
+app.get('/update_offer', update_offer);
+app.put('/update_offer/:id', update_offerput);
 
 app.use(authRoutes);

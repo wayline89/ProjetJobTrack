@@ -1,4 +1,61 @@
 <%- include('partials/header'); -%>
 
-<h1>fdhefh</h1>
-<%- include('partials/footer'); -%>
+    <button><a href="/dashboard">to the Dashboard</a></button>
+
+    <div class="offer-card">
+        <p class="title">
+            <%= offer.title %>
+        </p>
+        <p class="company"><strong>Company:</strong>
+            <%= offer.company %>
+        </p>
+        <p class="website"><strong>Website:</strong> <a href="https:<%= offer.website %> ">
+                <%= offer.website %>
+            </a></p>
+        <div class="contact">
+            <h1>contact of the Employer</h1>
+            <div class="contact-item">
+
+                <span class="contact-label">Name:</span>
+                <span class="contact-value">
+                    <%= offer.contact.name %>
+                </span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-label">Email:</span>
+                <span class="contact-value">
+                    <%= offer.contact.email %>
+                </span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-label">Phone:</span>
+                <span class="contact-value">
+                    <%= offer.contact.phone %>
+                </span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-label">Address:</span>
+                <span class="contact-value">
+                    <%= offer.contact.address %>
+                </span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-label">Status:</span>
+                <span class="contact-value">
+                    <%= offer.status %>
+                </span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-label">Comments:</span>
+                <span class="contact-value">
+                    <%= offer.comments %>
+                </span>
+            </div>
+
+            <button><a href="/update_offer?offer_id=<%= offer._id %>">Update offer</a></button>
+            <button><a href="/offer/<%= offer._id %>/delete">Delete</a></button>
+
+        </div>
+    </div>
+
+    <%- include('partials/footer'); -%>

@@ -1,11 +1,10 @@
 const { Router } = require("express");
+
+const router = Router(); 
+const { requireAuth, checkUser, checkOffers }= require('../middleware/authMiddleware');
 const authController = require("../controllers/authControllers");
 const offerController = require("../controllers/offerControllers");
 const dashboardController = require("../controllers/dashboardController");
-const { requireAuth, checkUser, checkOffers }= require('../middleware/authMiddleware');
-
-
-const router = Router(); 
 
 
 router.get('*', checkUser)
@@ -34,11 +33,15 @@ router.get("/logout", authController.logout_get);
 
 router.get("/create_offer", offerController.create_offer_get);
 router.post("/create_offer", offerController.create_offer_post);
+router.get('/display_offer', requireAuth, offerController.display_offer_id ); 
 
+
+
+router.put('/update_offer', offerController.update_offerput);
+router.get('/update_offer/:id', offerController.update_offer);
 // Dashboard route 
 
 router.get('/dashboard', dashboardController.dashboard_get);
-
 
 
 module.exports = router;

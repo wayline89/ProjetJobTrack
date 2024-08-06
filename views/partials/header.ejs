@@ -9,23 +9,23 @@
 
 <body>
   <nav>
-    <a href="/dashboard"> <img src="/logo.jpg" alt="" height="100px" width="100px"></a>
+    <a href="/"> <img src="/logo.jpg" alt="" height="100px" width="100px"></a>
     <% if (user) { %>
-      Welcome, <%= user.firstname %>
-        <%= user.lastname %>
+      <h3>Welcome, <%= user.firstname %>
+        <%= user.lastname %></h3>
           <% } else { %>
             <% } %>
-
               <ul>
                 <% if (user) { %>
-                  <li>Welcome, <%= user.firstname %>
-                      <%= user.lastname %>
+                  <h3><li>Welcome, <%= user.firstname %>
+                      <%= user.lastname %>    </h3>
                   </li>
                   <li><button><a href="/logout">Log out</a></button></li>
-                  <!-- <li><button><a href="/home">home</a></button></li> -->
+                  <li><button><a href="/update_offer">update offer</a></button></li>
                   <!-- <li><button><a href="/">job</a></button></li> -->
                   <li><button><a href="/create_offer">create offer</a></button></li>
                   <li><button><a href="/dashboard">dashboard</a></button></li>
+                  <li><button><a href="/home">home</a></button></li>
                   <!-- <li><button><a href="/login">login</a></button></li> -->
                   <li><button><a href="/profile">profile</a></button></li>
                   <li><button><a href="./signup" class="btn">Sign up</a></button></li>

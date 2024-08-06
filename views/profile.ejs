@@ -5,24 +5,39 @@
     <section class="profile-section">
         <div class="container">
             <div class="profile">
-               <div class="profile-title"><h1>My profile</h1></div> 
-                <div class="profile-info">
-                    <h1>Full name :</h1> <h1><%= user.firstname %> <%= user.lastname %></h1>
+                <div class="profile-title">
+                    <h1>My profile</h1>
                 </div>
                 <div class="profile-info">
-                    <h1>Email :</h1> <h1><%= user.email %> </h1>
+                    <h1>Full name :</h1>
+                    <h1>
+                        <%= user.firstname %>
+                            <%= user.lastname %>
+                    </h1>
                 </div>
                 <div class="profile-info">
-                    <h1>Github:  </h1>  <h1><%=  user.gitHub %> </h1>
+                    <h1>Email :</h1>
+                    <h1>
+                        <%= user.email %>
+                    </h1>
+                </div>
+                <div class="profile-info">
+                    <h1>Github: </h1>
+                    <h1>
+                        <%= user.gitHub %>
+                    </h1>
 
                 </div>
-<!-- 
+                <!-- 
                 <div class="profile-info">
                     <h1>offres:  </h1>  <h1><%=  user.offers %> </h1>
 
                 </div> -->
                 <div class="profile-info">
-                    <h1>User-id:  </h1>  <h1><%=  user.id %> </h1>
+                    <h1>User-id: </h1>
+                    <h1>
+                        <%= user.id %>
+                    </h1>
                 </div>
             </div>
         </div>
@@ -30,5 +45,3 @@
 
 
     <%- include('partials/footer'); -%>
-
-
