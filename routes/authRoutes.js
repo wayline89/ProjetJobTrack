@@ -37,12 +37,17 @@ router.get('/display_offer', requireAuth, offerController.display_offer_id );
 
 
 
-router.put('/update_offer', offerController.update_offerput);
+router.put('/update_offer/:id', offerController.update_offerput);
 router.get('/update_offer/:id', offerController.update_offer);
+
+
+
+router.get('/update_profile/',authController.update_profile );
+router.put('/update_profile/',authController.update_profileput );
 // Dashboard route 
 
 router.get('/dashboard', dashboardController.dashboard_get);
-
+router.delete('/dashboard', dashboardController.delete_offer);
 
 module.exports = router;
 

@@ -40,7 +40,7 @@ const handleErrors = (err) => {
 module.exports.create_offer_post = async (req, res) => {
 
     const token = req.cookies.jwt
-    console.log(req.body);
+    // console.log(req.body);
     const offerData = req.body
     if (token) {
         try {
@@ -143,29 +143,17 @@ module.exports.update_offer = async (req, res) => {
 };
 
 module.exports.update_offerput = async (req, res) => {
+
+    const { id } = req.params;
+    const { title, company, website, contact, origin, status, comments } = req.body;
     try {
-        console.log('coucou')
-        const offerId = req.query.offer_id;
-        const update = {
-            title: "hbhbhgfgffh",
-        }
-        const result = await Offer.updateOne({
-            _id: offerId
-        }, {
-$set : update
-        });
-        res.json(result)
+        const offer = await Offer.findByIdAndUpdate(id,  { title, company, website, contact, origin, status, comments }, { new: true });
+        res.send(offer);
+        console.log(offer);
+      } catch (error) {
+        console.error(error);
+        res.status(500).send(error);
+      }
+    };
 
 
-    } catch (error) {
-        console.error("Error fetching the offer:", error);
-        res.status(500).send("Error fetching the offer");
-    }
-};
-
-
-
-
-
-// module.exports.create_offer_get = (req, res) => {
-//     res.render('create_offer')}

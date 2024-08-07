@@ -65,7 +65,7 @@
         <textarea name="comments" id="comments" cols="38" rows="5"><%= offer.comments %></textarea>
         <p class="comments error"></p>
       </div>
-      <button class="btn" type="submit">Edit</button>
+      <button class="btn" type="submit">Update</button>
     </form>
   </div>
 </section>
@@ -114,20 +114,20 @@ console.log(urlParams );
       try {
         const res = await fetch(`/update_offer/${x}`, {
           method: 'PUT',
-          // body: JSON.stringify({
-          //   title:"new title"
-          //   website: website.value,
-          //   company: company.value,
-          //   contact: {
-          //     name: contactName.value,
-          //     email: contactEmail.value,
-          //     phone: contactPhone.value,
-          //     address: contactAdress.value
-          //   },
-          //   origin: origin.value,
-          //   status: status.value,
-          //   comments: comments.value
-          // }),
+          body: JSON.stringify({
+            title: title.value,
+            website: website.value,
+            company: company.value,
+            contact: {
+              name: contactName.value,
+              email: contactEmail.value,
+              phone: contactPhone.value,
+              address: contactAdress.value
+            },
+            origin: origin.value,
+            status: status.value,
+            comments: comments.value
+          }),
           headers: { 'Content-Type': 'application/json' }
         });
         const data = await res.json();
@@ -147,7 +147,8 @@ console.log(urlParams );
           statusError.textContent = data.errors.status;
           commentsError.textContent = data.errors.comments;
         }
-        if (data.offer) {
+        if (data._id
+        ) {
           location.assign('/dashboard');
         }
       } catch (error) {

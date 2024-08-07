@@ -57,7 +57,7 @@ const checkUser = (req, res, next) => {
         } else {
           let user = await User.findById(decodedToken.id);
           let offers = await Offer.find({user: user._id});
-          console.log("offers: ", offers);
+          // console.log("offers: ", offers);
           res.locals.offers = offers;
           next();
         }

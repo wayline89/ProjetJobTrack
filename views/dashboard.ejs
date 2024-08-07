@@ -19,12 +19,11 @@
               <option value="asc">Asc.</option>
               <option value="desc">Desc.</option>
           </select>
-
       </div>
   </div>
     <div class="offers-grid">
       <% offers.forEach(offer => { %>
-        <div class="offer-card">
+        <div class="offer-card" id="<%= offer._id %>" >
           <p class="title"><%= offer.title %></p>
           <p class="company"><strong>Company:</strong> <%= offer.company %></p>
           <p class="website"><strong>Website:</strong> <a href="https:<%= offer.website %> "><%= offer.website %></a></p>
@@ -59,7 +58,7 @@
             </div>
           </div>
           <button><a href="/display_offer?offer_id=<%= offer._id %>">See More</a></button>
-
+         <button class="deletebtn"><a href="/dashboard?offer_id=<%= offer._id %>">DeletFDGDGe</a></button>
         </div>
       <% }) %>
     </div>
@@ -69,3 +68,59 @@
 </div>
 
 <%- include('partials/footer'); -%>
+
+<script>
+
+// const grid = document(.grid)
+// const cards = grid.children
+// cards.foreach(card => {
+// const id = card.getAttribute(id)
+// const btnDelete = document(btn)
+// btnDelete.addeventlistener("click", => {
+// fetch(method: delete)
+// })
+// })
+
+
+const offerCards = document.getElementsByClassName('offer-card');
+const deleteBtns = document.getElementsByClassName('deletebtn');
+
+// Convert HTMLCollections to arrays
+const offerCardArray = Array.from(offerCards);
+const deleteBtnArray = Array.from(deleteBtns);
+
+offerCardArray.forEach((card, index) => {
+  const deleteBtn = deleteBtnArray[index];
+
+  if (deleteBtn) {
+    deleteBtn.addEventListener('click', async (e) => {
+      e.preventDefault();
+
+      try {
+        // Using the ID of the current card
+        const cardId = card.id;
+
+        const res = await fetch(`/dashboard/${cardId}`, {
+          method: 'DELETE',
+        });
+        const data = await res.json();
+        console.log("data : ", data);
+
+        if (data.errors) {
+          console.log(data.errors);
+        }
+        if (data) {
+          location.assign('/dashboard');
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    });
+  }
+
+  console.log(card.id);
+});
+
+
+
+</script>

@@ -86,6 +86,28 @@ module.exports.login_post = async (req, res)=>{
   }
 }
 
+module.exports.update_profile = async (req, res) => {
+    res.render('update_profile');
+};
+
+
+module.exports.update_profileput = async (req, res) => {
+        const { id } = req.params;
+        const { firstname, lastname, email, github,  password } =
+        req.body;
+        try {
+            const user = await User.findByIdAndUpdate(id, { firstname, lastname, email, github,  password },{new:true});
+            res.send(user);
+            console.log(user);
+          } catch (error) {
+            console.error(error);
+            res.status(500).send(error);
+          }
+        };
+  
+
+
+
 module.exports.logout_get = (req, res)=>{
   res.cookie('jwt', '', {maxAge : 1});
   res.redirect('/login');
