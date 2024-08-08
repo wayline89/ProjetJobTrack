@@ -42,8 +42,8 @@ router.get('/update_offer/:id', offerController.update_offer);
 
 
 
-router.get('/update_profile/',authController.update_profile );
-router.put('/update_profile/',authController.update_profileput );
+router.get('/update_profile/:id',authController.update_profile );
+router.put('/update_profile/:id',authController.update_profileput );
 // Dashboard route 
 
 router.get('/dashboard', dashboardController.dashboard_get);

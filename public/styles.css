@@ -105,6 +105,7 @@ button {
   display: block;
   padding: 10px 16px;
   letter-spacing: 2px;
+  cursor: pointer;
 }
 
 .error {
@@ -240,10 +241,11 @@ footer {
   padding: 5px 10px;
   font-size: 1em;
   color: black;
+  background: #FEE996;
   border: none;
   cursor: pointer;
   border-radius: 36px;
-  background: #FEE996;
+
 }
 
 .testbtn button a {
@@ -396,3 +398,21 @@ nav img {
 overflow-wrap: break-word;
 
 }
+
+
+.centerdashboard {
+  display: inline-block;
+  margin-top: 10px; /* Optional: adds spacing between text and button */
+}
+
+.centerdashboard a {
+
+color: black;
+}
+
+.centerdashboard a:hover {
+
+  color: white;
+  }
+  
+

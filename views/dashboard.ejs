@@ -2,7 +2,7 @@
 
 <div class="offres content">
   <% if (offers.length > 0) { %>
-    <h1 class="user-name"><%= user.firstname %> <%= user.lastname %></h1>
+    <h1 class="user-name" id="<%= user._id %>"><%= user.firstname %> <%= user.lastname %></h1>
     <button><a href="/create_offer">Create a new offer</a></button>
     <div class="container container3">
       <div class="FilteredBy">
@@ -58,12 +58,19 @@
             </div>
           </div>
           <button><a href="/display_offer?offer_id=<%= offer._id %>">See More</a></button>
-         <button class="deletebtn"><a href="/dashboard?offer_id=<%= offer._id %>">DeletFDGDGe</a></button>
+
         </div>
       <% }) %>
     </div>
   <% } else { %>
-    <p>No offers to display...</p>
+    <div class="no-offers">
+      <p>No offers to display... 
+        <button class="centerdashboard">
+          <a href="/create_offer">Click here</a>
+        </button>
+      </p>
+    </div>
+
   <% } %>
 </div>
 
@@ -84,6 +91,10 @@
 
 const offerCards = document.getElementsByClassName('offer-card');
 const deleteBtns = document.getElementsByClassName('deletebtn');
+
+const element = document.getElementById('<%= user._id %>');
+    const id = element.id; 
+    console.log(id + "coucou")
 
 // Convert HTMLCollections to arrays
 const offerCardArray = Array.from(offerCards);

@@ -93,10 +93,11 @@ module.exports.update_profile = async (req, res) => {
 
 module.exports.update_profileput = async (req, res) => {
         const { id } = req.params;
-        const { firstname, lastname, email, github,  password } =
+    
+        const { firstname, lastname, email, github } =
         req.body;
         try {
-            const user = await User.findByIdAndUpdate(id, { firstname, lastname, email, github,  password },{new:true});
+            const user = await User.findByIdAndUpdate(id, { firstname, lastname, email, github },{new:true});
             res.send(user);
             console.log(user);
           } catch (error) {

@@ -28,21 +28,21 @@
 
             <div class="emailS">
                 <label for="email">Email</label>
-                <input type="text" name="email" value=" <%= user.email %>" required>
+                <input type="text" name="email" id="email" value=" <%= user.email %>" required>
                 <div class="email error"></div>
             </div>
 
             <div class="gitHubS">
                 <label for="gitHub">GitHub</label>
-                <input type="text" name="gitHub"  value=" <%= user.gitHub%>">
+                <input type="text" name="gitHub" id="GitHub" value=" <%= user.gitHub%>">
                 <div class="gitHub error"></div>
             </div>
 
-            <div class="passwordS">
+            <!-- <div class="passwordS">
                 <label for="password">Password</label>
-                <input type="password" name="password" required>
+                <input type="password" id="Password" name="password" required>
                 <div class="password error"></div>
-            </div>
+            </div> -->
 <!-- 
             <div class="repeatPasswordS">
                 <label for="repeatPassword">Confirm password</label>
@@ -51,52 +51,68 @@
             </div> -->
 
             <div class="registernewprofile">
-                <button><a id="registernewprofile"  class="registernewprofile" href="">update profile </a></button>
+                <button><a id="registernewprofile"  class="registernewprofile">update profile </a></button>
             </div>
         </form>
     </div>
 </div>
+
 <script>
 
     const form = document.getElementById('form');
+    const firstname = document.querySelector('#firstnameInput');
+    const lastname = document.querySelector('#lastnameInput');
+    const email = document.querySelector('#email');
+    const GitHub = document.querySelector('#GitHub');
+    // const Password = document.querySelector('#Password');
+
     const emailError = document.querySelector('.email.error')
-    const passwordError = document.querySelector('.password.error')
-const XXX = document.getElementsByClassName('formSignup');
-console.log(XXX._id)
+    // const passwordError = document.querySelector('.password.error')
+
+    const element = document.getElementById('<%= user._id %>');
+    const id = element.id; 
+    console.log(id)
+
+
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
 console.log("ttt");
         // Reset values
         emailError.textContent = ''
-        passwordError.textContent = ''
+        // passwordError.textContent = ''
 
-        // Get values
+        // // Get values
         const firstname = form.firstname.value;
         const lastname = form.lastname.value;
         const email = form.email.value;
         const gitHub = form.gitHub.value;
-        const password = form.password.value;
+        // const password = form.password.value;
 
         try {
-            const res = await fetch('/update_profile', {
+            const res = await fetch(`/update_profile/${id}`, {
                 method: 'PUT',
-                body: JSON.stringify({ firstname, lastname, email, gitHub, password }),
+                body: JSON.stringify({ 
+                    firstname: firstname,
+                    lastname: lastname,
+                    email: email,
+                    gitHub: GitHub,
+                    // password: password.value,
+                     }),
                 headers: { 'Content-Type': 'application/json' }
             })
-            const data = await res.json()
-            console.log(data)
-            alert(data)
+            const data = await res.json();
+            console.log('ssss' + data);
+
             if (data.errors) {
                 emailError.textContent = data.errors.email
-                passwordError.textContent = data.errors.password
             }
             if (data._id
             ) {
                 location.assign('/profile')
             }
         }
-        catch (err) {
-            console.log(err)
+        catch (error) {
+            console.log(error)
         }
     })
 </script>
