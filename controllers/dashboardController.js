@@ -14,7 +14,6 @@ const { name } = require("ejs");
 
 
 module.exports.dashboard_get = async (req, res) => {
-  console.log(req.params);
   const {id} =  req.params;
   console.log("coucblalalalalalou" + id) 
 
@@ -27,7 +26,6 @@ module.exports.dashboard_get = async (req, res) => {
     res.status(500).send('Error fetching offers');
   }
 };
-
 
 
 // Delete an offer
