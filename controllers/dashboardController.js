@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const User = require("../models/user");
+const User = require("../models/User");
 const Offer = require("../models/offer");
 const { isEmail, isURL } = require("validator");
 const bcrypt = require("bcrypt");
