@@ -58,19 +58,14 @@
             </div>
           </div>
           <button><a href="/display_offer?offer_id=<%= offer._id %>">See More</a></button>
-
+         <button class="deletebtn"><a href="/dashboard?offer_id=<%= offer._id %>">DeletFDGDGe</a></button>
         </div>
       <% }) %>
     </div>
   <% } else { %>
-    <div class="no-offers">
-      <p>No offers to display... 
-        <button class="centerdashboard">
-          <a href="/create_offer">Click here</a>
-        </button>
-      </p>
-    </div>
-
+    <p>No offers to display...</p>
+    <button><a href="/display_offer?offer_id=<%= offer._id %>">See More</a></button>
+    <button class="deletebtn"><a href="/dashboard?offer_id=<%= offer._id %>">DeletFDGDGe</a></button>
   <% } %>
 </div>
 

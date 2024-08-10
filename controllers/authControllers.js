@@ -1,7 +1,7 @@
 const User = require('../models/user');
 const Offer = require('../models/offer');
 const jwt = require('jsonwebtoken');
-
+const bcrypt = require('bcrypt');
 
 //handle errors
 const handleErrors = (err) =>{
@@ -106,7 +106,6 @@ module.exports.update_profileput = async (req, res) => {
           }
         };
   
-
 
 
 module.exports.logout_get = (req, res)=>{
